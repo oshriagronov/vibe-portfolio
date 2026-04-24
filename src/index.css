@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #12131a;
+  --color-surface-dim: #12131a;
+  --color-on-surface: #e3e1ec;
+  --color-on-surface-variant: #c4c7c8;
+  --color-outline: #8e9192;
+  --color-outline-variant: #444748;
+  --color-primary: #ffffff;
+  --color-on-primary: #2f3131;
+  --color-secondary: #c8c6c5;
+  --color-on-secondary: #313030;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 9999px;
+
+  --spacing-editorial-xxl: 80px;
+  --spacing-editorial-xl: 40px;
+  --spacing-editorial-lg: 24px;
+  --spacing-editorial-md: 16px;
+  --spacing-editorial-sm: 8px;
+  --spacing-editorial-xs: 4px;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-on-surface antialiased selection:bg-white selection:text-black;
+  }
+}
+
+.font-display {
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.label-caps {
+  @apply text-[11px] font-semibold tracking-[0.3em] uppercase text-zinc-500;
+}
+
+.py-xxl {
+  @apply py-[var(--spacing-editorial-xxl)];
+}
+
+.gap-xl {
+  @apply gap-[var(--spacing-editorial-xl)];
+}
+
+.mb-md {
+  @apply mb-[var(--spacing-editorial-md)];
+}
+
+.mb-lg {
+  @apply mb-[var(--spacing-editorial-lg)];
+}
+
+.mt-xl {
+  @apply mt-[var(--spacing-editorial-xl)];
+}
+
+.mb-xl {
+  @apply mb-[var(--spacing-editorial-xl)];
+}
