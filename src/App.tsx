@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState, useEffect } from 'react';
 import { motion } from "motion/react";
 import { 
   Github, 
@@ -18,7 +19,8 @@ import {
   Wrench, 
   GraduationCap, 
   Mail,
-  ArrowUpRight
+  ArrowUpRight,
+  GitGraph
 } from "lucide-react";
 import { USER_INFO, PROJECTS, SKILLS, TIMELINE } from "./constants";
 
@@ -44,12 +46,45 @@ const staggerContainer = {
 };
 
 export default function App() {
+  const [githubActivity, setGithubActivity] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchGithubStats() {
+      try {
+        const username = USER_INFO.githubUrl.split('/').pop();
+        if (!username) return;
+        
+        // Attempt to get a sum of activity via Search API (commits)
+        // Note: This is an approximation and subject to GitHub search limits
+        const response = await fetch(`https://api.github.com/search/commits?q=author:${username}`, {
+          headers: { 'Accept': 'application/vnd.github.cloak-preview' }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          const total = data.total_count;
+          setGithubActivity(total > 999 ? `${(total / 1000).toFixed(1)}k+` : `${total}`);
+        } else {
+          // Fallback to public repo count if search is limited
+          const userRes = await fetch(`https://api.github.com/users/${username}`);
+          if (userRes.ok) {
+            const userData = await userRes.json();
+            setGithubActivity(`${userData.public_repos} Projects`);
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch Github stats", error);
+      }
+    }
+    fetchGithubStats();
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Header */}
       <header className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-zinc-800 flex justify-between items-center px-6 md:px-12 h-16">
         <div className="text-sm font-black tracking-widest text-white uppercase">
-          {USER_INFO.role.split(' ').join(' ')}
+          OSHRI AGRONOV
         </div>
         <div className="flex items-center gap-6">
           <a 
@@ -78,9 +113,9 @@ export default function App() {
               <motion.h1 variants={fadeInUp} className="font-display text-primary mb-lg w-full">
                 I'm {USER_INFO.name.split(' ')[0]} a curious mind, always creating.
               </motion.h1>
-              <motion.div variants={fadeInUp} className="text-lg text-on-surface-variant max-w-[600px] space-y-4">
+              <motion.div variants={fadeInUp} className="text-lg text-on-surface-variant max-w-[600px] w-full space-y-4">
                 {USER_INFO.summary.map((p, i) => (
-                  <p key={i} className="leading-relaxed whitespace-normal">{p}</p>
+                  <p key={i} className="leading-relaxed w-full">{p}</p>
                 ))}
               </motion.div>
               
@@ -119,7 +154,9 @@ export default function App() {
               <p className="label-caps mb-xs">Selected Works</p>
               <h2 className="text-3xl font-semibold text-primary">Project Repository</h2>
             </div>
-            <span className="text-xs font-mono text-zinc-500">Total Commits: 1.2k+</span>
+            <span className="text-xs font-mono text-zinc-500">
+              {githubActivity ? `Total Commits: ${githubActivity}` : 'Syncing Activity...'}
+            </span>
           </div>
 
           <motion.div 
@@ -139,11 +176,6 @@ export default function App() {
                   <span className="text-[10px] font-mono text-zinc-600 bg-black px-2 py-1 tracking-wider">
                     {project.tag}
                   </span>
-                  <div className="flex gap-4">
-                    <a href={project.repoUrl} className="text-zinc-600 hover:text-white transition-colors duration-200">
-                      <Github size={20} />
-                    </a>
-                  </div>
                 </div>
                 <h3 className="text-xl font-medium text-primary mb-4 group-hover:translate-x-1 transition-transform">
                   {project.title}
@@ -282,7 +314,7 @@ export default function App() {
             >
               Building Together.
             </motion.h2>
-            <p className="text-lg text-zinc-400 mb-10 max-w-[600px] mx-auto leading-relaxed whitespace-normal">
+            <p className="text-lg text-zinc-400 mb-10 max-w-[600px] w-full mx-auto leading-relaxed">
               Always open to discussing ideas or collaborating on innovative projects.
             </p>
             <motion.a 
