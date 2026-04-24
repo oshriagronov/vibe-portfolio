@@ -3,6 +3,9 @@
  * Change these values to update your portfolio details.
  */
 
+import heroPortrait from "./assets/hero_portrait.png";
+import cvFile from "./assets/cv.pdf";
+
 export const USER_INFO = {
   name: "Oshri Agronov",
   role: "Software Engineering Student",
@@ -13,11 +16,11 @@ export const USER_INFO = {
     "Constantly sharpening my skills in modern programming languages, frameworks, and cutting-edge technologies."
   ],
   status: "Currently: Defense Company Intern",
-  portraitUrl: "https://lh3.googleusercontent.com/aida/ADBb0ui4JNLu-vNiccEso0bjdEXN0d2Rr5WkZHUq_oMWgI8PBepnO-HW_FP_w3jLx2Dq-ufZudbXYk2JfHMibms-G7WJIqix2AawAId79fBTJTnK6E1i2Efa4mPMpxViaEf-o1nhxbrcNtsClCJ3Ap7wY348kkjvcgO3ZCWeKjU5FqbOCkFM8qyjtgB2FTcr-1pCkR3gTnfne7jX9dBTMJD6T9fPlF2rKXdB3w4PritIU1n-m-qlyFc_iNaifORLFk0U9xBYVasHnvs3wA",
+  portraitUrl: "/src/assets/hero_portrait.png",
   githubUrl: "https://github.com/oshriagronov",
   linkedinUrl: "https://www.linkedin.com/in/oshri-agronov/",
   twitterUrl: "https://x.com/oshriagronov",
-  cvUrl: "#",
+  cvUrl: cvFile,
 };
 
 export const PROJECTS = [

@@ -23,6 +23,7 @@ import {
   GitGraph
 } from "lucide-react";
 import { USER_INFO, PROJECTS, SKILLS, TIMELINE } from "./constants";
+import heroPortrait from "./assets/hero_portrait.png";
 
 const IconMap = {
   Code2: Code2,
@@ -89,6 +90,7 @@ export default function App() {
         <div className="flex items-center gap-6">
           <a 
             href={USER_INFO.cvUrl}
+            download="Oshri_Agronov_CV.pdf"
             className="flex items-center gap-2 font-sans tracking-tighter text-xs text-white border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-all duration-200"
           >
             DOWNLOAD CV <Download size={14} />
@@ -111,7 +113,7 @@ export default function App() {
                 {USER_INFO.role}
               </motion.p>
               <motion.h1 variants={fadeInUp} className="font-display text-primary mb-lg w-full">
-                I'm {USER_INFO.name.split(' ')[0]} a curious mind, always creating.
+                Curious mind, always creating.
               </motion.h1>
               <motion.div variants={fadeInUp} className="text-lg text-on-surface-variant max-w-[600px] w-full space-y-4">
                 {USER_INFO.summary.map((p, i) => (
@@ -140,7 +142,7 @@ export default function App() {
               <img 
                 alt={USER_INFO.name} 
                 className="w-full h-full object-cover grayscale-[0.2] contrast-110 brightness-90 group-hover:grayscale-0 transition-all duration-700 ease-in-out" 
-                src={USER_INFO.portraitUrl}
+                src={heroPortrait}
                 referrerPolicy="no-referrer"
               />
             </motion.div>
@@ -333,18 +335,18 @@ export default function App() {
       <footer className="w-full border-t border-zinc-900 bg-black py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="flex flex-col gap-2 items-center md:items-start">
-            <div className="text-[10px] tracking-[0.2em] uppercase text-zinc-500 font-mono">
+            <div className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-mono">
               © {new Date().getFullYear()} {USER_INFO.name}
             </div>
-            <div className="text-[9px] tracking-[0.1em] uppercase text-zinc-700 font-mono">
+            <div className="text-[9px] tracking-[0.1em] uppercase text-zinc-500 font-mono">
               Generated with Google Stitch & Polished with Google AI Studio
             </div>
           </div>
           
           <div className="flex gap-8">
-            <a href={USER_INFO.githubUrl} className="text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-white transition-all font-mono">GITHUB</a>
-            <a href={USER_INFO.linkedinUrl} className="text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-white transition-all font-mono">LINKEDIN</a>
-            <a href={USER_INFO.twitterUrl} className="text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-white transition-all font-mono">X</a>
+            <a href={USER_INFO.githubUrl} className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 hover:text-white transition-all font-mono">GITHUB</a>
+            <a href={USER_INFO.linkedinUrl} className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 hover:text-white transition-all font-mono">LINKEDIN</a>
+            <a href={USER_INFO.twitterUrl} className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 hover:text-white transition-all font-mono">X</a>
           </div>
         </div>
       </footer>
