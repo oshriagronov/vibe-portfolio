@@ -1,20 +1,61 @@
+<br />
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <a href="https://github.com/oshriagronov/vibe-portfolio">
+    <img src="./src/assets/logo.png" alt="Logo" width="300" height="200" style="object-fit: cover; border-radius: 10px;">
+  </a>
+  <h3 align="center">Vibe Portfolio</h3>
+  <p align="center">
+    A vibe coded portfolio site Generated with Google Stitch & Polished with Google AI Studio.
+  </p>
 </div>
 
-# Run and deploy your AI Studio app
+## About
 
-This contains everything you need to run your app locally.
+This project showcases a vibe coded portfolio site. It was generated using Google Stitch and polished with Google AI Studio to create an interactive and visually pleasing experience.
 
-View your app in AI Studio: https://ai.studio/apps/74761d73-a04f-4e83-9e02-7e70e61217ee
+## Technologies used
 
-## Run Locally
+- js, html & css.
+- React.
+- TailwindCSS.
 
-**Prerequisites:**  Node.js
+## Tools Utilized
 
+- Google Stitch.
+- Google AI Studio.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Getting Started
+
+### 💻 Local Setup
+
+To get a local copy up and running, follow these simple steps.
+
+#### Prerequisites
+
+- nodejs
+- npm
+- vite
+
+#### Initialization
+
+---
+
+1. **Clone and enter the repository:**
+
+   ```bash
+   git clone https://github.com/oshriagronov/vibe-portfolio && cd vibe-portfolio
+   ```
+
+2. **Install npm modules:**
+
+   ```bash
+   npm i
+   ```
+
+3. **Run in dev mode:**  
+   ```bash
+   npm run dev
+   ```
+
+4. **Go to the site:**
+<br/> [http://localhost:5173](http://localhost:5173/)
