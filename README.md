@@ -58,4 +58,4 @@ To get a local copy up and running, follow these simple steps.
    ```
 
 4. **Go to the site:**
-<br/> [http://localhost:5173](http://localhost:5173/)
+<br/> [http://localhost:3000](http://localhost:3000)

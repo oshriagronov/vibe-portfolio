@@ -5,19 +5,19 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from "motion/react";
-import { 
-  Github, 
-  Linkedin, 
-  Twitter, 
-  Download, 
-  ExternalLink, 
-  Code2, 
-  Hammer, 
-  Layers, 
-  Terminal, 
-  MapPin, 
-  Wrench, 
-  GraduationCap, 
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Download,
+  ExternalLink,
+  Code2,
+  Hammer,
+  Layers,
+  Terminal,
+  MapPin,
+  Wrench,
+  GraduationCap,
   Mail,
   ArrowUpRight,
   GitGraph
@@ -54,13 +54,13 @@ export default function App() {
       try {
         const username = USER_INFO.githubUrl.split('/').pop();
         if (!username) return;
-        
+
         // Attempt to get a sum of activity via Search API (commits)
         // Note: This is an approximation and subject to GitHub search limits
         const response = await fetch(`https://api.github.com/search/commits?q=author:${username}`, {
           headers: { 'Accept': 'application/vnd.github.cloak-preview' }
         });
-        
+
         if (response.ok) {
           const data = await response.json();
           const total = data.total_count;
@@ -88,7 +88,7 @@ export default function App() {
           OSHRI AGRONOV
         </div>
         <div className="flex items-center gap-6">
-          <a 
+          <a
             href={USER_INFO.cvUrl}
             download="Oshri_Agronov_CV.pdf"
             className="flex items-center gap-2 font-sans tracking-tighter text-xs text-white border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-all duration-200"
@@ -102,7 +102,7 @@ export default function App() {
         {/* Hero Section */}
         <section className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto py-xxl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
-            <motion.div 
+            <motion.div
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
@@ -120,7 +120,7 @@ export default function App() {
                   <p key={i} className="leading-relaxed w-full">{p}</p>
                 ))}
               </motion.div>
-              
+
               <motion.div variants={fadeInUp} className="mt-xl flex flex-wrap gap-8">
                 <div className="flex flex-col">
                   <span className="text-[10px] text-zinc-600 uppercase tracking-widest mb-1 font-semibold">Status</span>
@@ -132,16 +132,16 @@ export default function App() {
               </motion.div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative aspect-square w-full max-w-[500px] mx-auto lg:ml-auto overflow-hidden border border-zinc-800 bg-zinc-900 group rounded-full"
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
-              <img 
-                alt={USER_INFO.name} 
-                className="w-full h-full object-cover grayscale-[0.2] contrast-110 brightness-90 group-hover:grayscale-0 transition-all duration-700 ease-in-out" 
+              <img
+                alt={USER_INFO.name}
+                className="w-full h-full object-cover grayscale-[0.2] contrast-110 brightness-90 group-hover:grayscale-0 transition-all duration-700 ease-in-out"
                 src={heroPortrait}
                 referrerPolicy="no-referrer"
               />
@@ -161,7 +161,7 @@ export default function App() {
             </span>
           </div>
 
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -169,7 +169,7 @@ export default function App() {
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             {PROJECTS.map((project) => (
-              <motion.div 
+              <motion.div
                 key={project.id}
                 variants={fadeInUp}
                 className="group border border-zinc-800 bg-zinc-900/50 p-6 hover:bg-zinc-900 transition-all duration-300 relative overflow-hidden"
@@ -185,9 +185,9 @@ export default function App() {
                 <p className="text-sm text-on-surface-variant mb-6 leading-relaxed">
                   {project.description}
                 </p>
-                <a 
-                  href={project.repoUrl} 
-                  target="_blank" 
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 text-[11px] font-mono text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity hover:text-white cursor-pointer"
                 >
@@ -261,10 +261,10 @@ export default function App() {
           <div className="max-w-4xl">
             <p className="label-caps mb-xs">Background</p>
             <h2 className="text-3xl font-semibold text-primary mb-xl">Professional Timeline</h2>
-            
+
             <div className="space-y-12">
               {TIMELINE.map((item, idx) => (
-                <motion.div 
+                <motion.div
                   key={item.id}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -283,22 +283,6 @@ export default function App() {
                   <p className="text-sm text-on-surface-variant max-w-2xl mb-4 leading-relaxed">
                     {item.description}
                   </p>
-                  
-                  {item.location && (
-                    <div className="flex items-center gap-2 text-zinc-600 font-mono text-[10px] uppercase mb-2">
-                      <MapPin size={12} /> {item.location}
-                    </div>
-                  )}
-
-                  {item.tags && (
-                    <div className="flex flex-wrap gap-2">
-                      {item.tags.map(tag => (
-                        <span key={tag} className="flex items-center gap-1 text-[10px] font-mono text-zinc-500 uppercase">
-                          <Wrench size={10} /> {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </motion.div>
               ))}
             </div>
@@ -308,7 +292,7 @@ export default function App() {
         {/* Contact Section */}
         <section className="px-6 md:px-12 max-w-7xl mx-auto py-xxl border-t border-zinc-900 bg-black">
           <div className="flex flex-col items-center text-center py-20 w-full">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -319,7 +303,7 @@ export default function App() {
             <p className="text-lg text-zinc-400 mb-10 max-w-[600px] w-full mx-auto leading-relaxed">
               Always open to discussing ideas or collaborating on innovative projects.
             </p>
-            <motion.a 
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href={`https://mail.google.com/mail/?view=cm&fs=1&to=${USER_INFO.email}`}
@@ -341,10 +325,10 @@ export default function App() {
               © {new Date().getFullYear()} {USER_INFO.name}
             </div>
             <div className="text-[9px] tracking-[0.1em] uppercase text-zinc-500 font-mono">
-              Generated with Google Stitch & Polished with Google AI Studio
+              Generated with Google Stitch & Polished with Google AI Studio and Antigravity
             </div>
           </div>
-          
+
           <div className="flex gap-8">
             <a href={USER_INFO.githubUrl} className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 hover:text-white transition-all font-mono">GITHUB</a>
             <a href={USER_INFO.linkedinUrl} className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 hover:text-white transition-all font-mono">LINKEDIN</a>
