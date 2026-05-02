@@ -55,6 +55,13 @@ export default function App() {
         const username = USER_INFO.githubUrl.split('/').pop();
         if (!username) return;
 
+        const cached = sessionStorage.getItem(`githubStats_${username}`);
+        if (cached) {
+          setGithubActivity(cached);
+          return;
+        }
+
+
         // Attempt to get a sum of activity via Search API (commits)
         // Note: This is an approximation and subject to GitHub search limits
         const response = await fetch(`https://api.github.com/search/commits?q=author:${username}`, {
@@ -64,13 +71,17 @@ export default function App() {
         if (response.ok) {
           const data = await response.json();
           const total = data.total_count;
-          setGithubActivity(total > 999 ? `${(total / 1000).toFixed(1)}k+` : `${total}`);
+          const resultStr = total > 999 ? `${(total / 1000).toFixed(1)}k+` : `${total}`;
+          setGithubActivity(resultStr);
+          sessionStorage.setItem(`githubStats_${username}`, resultStr);
         } else {
           // Fallback to public repo count if search is limited
           const userRes = await fetch(`https://api.github.com/users/${username}`);
           if (userRes.ok) {
             const userData = await userRes.json();
-            setGithubActivity(`${userData.public_repos} Projects`);
+            const resultStr = `${userData.public_repos} Projects`;
+            setGithubActivity(resultStr);
+            sessionStorage.setItem(`githubStats_${username}`, resultStr);
           }
         }
       } catch (error) {
