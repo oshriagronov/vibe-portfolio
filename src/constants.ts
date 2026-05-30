@@ -15,7 +15,7 @@ export const USER_INFO = {
     "I'm a passionate developer who loves turning ideas into real products.",
     "Constantly sharpening my skills in modern programming languages, frameworks, and cutting-edge technologies."
   ],
-  status: "Currently: Defense Company Intern",
+  status: "Currently: Rafael Advanced Defense Systems",
   portraitUrl: "/src/assets/hero_portrait.png",
   githubUrl: "https://github.com/oshriagronov",
   linkedinUrl: "https://www.linkedin.com/in/oshri-agronov/",
@@ -73,7 +73,7 @@ export const SKILLS = {
 export const TIMELINE = [
   {
     id: "work-intern",
-    company: "Defense Company",
+    company: "Rafael Advanced Defense Systems",
     role: "Software Engineering Intern",
     period: "DEC 2025 — PRESENT",
     description: "Built and maintained a containerized monitoring system using Docker, developed Python scripts for automated data processing, and wrote C++ programs for hardware-level integration.",
@@ -81,7 +81,7 @@ export const TIMELINE = [
   },
   {
     id: "edu-braude",
-    company: "Braude Academic College",
+    company: "Braude Academic College", 
     role: "B.S. in Software Engineering",
     period: "JAN 2024 — PRESENT",
     description: "Relevant Coursework: Operating Systems, Data Structures and Introduction to Algorithms, Algorithms, Object Oriented Programming",
