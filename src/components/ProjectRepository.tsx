@@ -9,8 +9,21 @@ import { ArrowUpRight } from "lucide-react";
 import { USER_INFO, PROJECTS } from "../constants";
 import { fadeInUp, staggerContainer } from "../utils/motion";
 
+// Lightweight internationalization (i18n) dictionary
+const TRANSLATIONS = {
+  en: {
+    selectedWorks: "Selected Works",
+    projectRepository: "Project Repository",
+    syncingActivity: "Syncing Activity...",
+    totalCommits: "Total Commits",
+    viewDetail: "View Detail"
+  }
+};
+
 export default function ProjectRepository() {
   const [githubActivity, setGithubActivity] = useState<string | null>(null);
+  const locale = 'en'; // Default language setting, easily configurable in the future
+  const t = TRANSLATIONS[locale];
 
   useEffect(() => {
     const controller = new AbortController();
@@ -51,11 +64,11 @@ export default function ProjectRepository() {
     <section id="works" className="px-6 md:px-12 max-w-7xl mx-auto py-xxl border-t border-zinc-900">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-xl gap-4">
         <div>
-          <p className="label-caps mb-xs">Selected Works</p>
-          <h2 className="text-3xl font-semibold text-primary">Project Repository</h2>
+          <p className="label-caps mb-xs">{t.selectedWorks}</p>
+          <h2 className="text-3xl font-semibold text-primary">{t.projectRepository}</h2>
         </div>
         <span className="text-xs font-mono text-zinc-500">
-          {githubActivity ? `Activity: ${githubActivity}` : 'Syncing Activity...'}
+          {githubActivity ? `${t.totalCommits}: ${githubActivity}` : t.syncingActivity}
         </span>
       </div>
 
@@ -89,7 +102,7 @@ export default function ProjectRepository() {
               rel="noopener noreferrer"
               className="flex items-center gap-1 text-[11px] font-mono text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity hover:text-white cursor-pointer"
             >
-              View Detail <ArrowUpRight size={12} />
+              {t.viewDetail} <ArrowUpRight size={12} />
             </a>
           </motion.div>
         ))}
