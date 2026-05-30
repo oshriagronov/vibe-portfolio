@@ -36,7 +36,7 @@ export default function Hero() {
           <motion.h1 variants={fadeInUp} className="font-display text-primary mb-lg w-full">
             {t.title}
           </motion.h1>
-          <motion.div variants={fadeInUp} className="text-lg text-on-surface-variant max-w-[600px] w-full space-y-4">
+          <motion.div variants={fadeInUp} className="text-lg text-on-surface-variant max-w-150 w-full space-y-4">
             {USER_INFO.summary.map((p, i) => (
               <p key={i} className="leading-relaxed w-full">{p}</p>
             ))}
@@ -57,9 +57,9 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative aspect-square w-full max-w-[500px] mx-auto lg:ml-auto overflow-hidden border border-zinc-800 bg-zinc-900 group rounded-full"
+          className="relative aspect-square w-full max-w-125 mx-auto lg:ml-auto overflow-hidden border border-zinc-800 bg-zinc-900 group rounded-full"
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent z-10"></div>
           <img
             alt={USER_INFO.name}
             className="w-full h-full object-cover grayscale-[0.2] contrast-110 brightness-90 group-hover:grayscale-0 transition-all duration-700 ease-in-out"
