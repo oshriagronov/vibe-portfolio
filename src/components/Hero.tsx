@@ -8,7 +8,18 @@ import { USER_INFO } from "../constants";
 import heroPortrait from "../assets/hero_portrait.png";
 import { fadeInUp, staggerContainer } from "../utils/motion";
 
+// Lightweight internationalization (i18n) dictionary
+const TRANSLATIONS = {
+  en: {
+    title: "Curious mind, always creating.",
+    statusLabel: "Status"
+  }
+};
+
 export default function Hero() {
+  const locale = 'en'; // Default language setting, easily configurable in the future
+  const t = TRANSLATIONS[locale];
+
   return (
     <section className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto py-xxl">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
@@ -23,7 +34,7 @@ export default function Hero() {
             {USER_INFO.role}
           </motion.p>
           <motion.h1 variants={fadeInUp} className="font-display text-primary mb-lg w-full">
-            Curious mind, always creating.
+            {t.title}
           </motion.h1>
           <motion.div variants={fadeInUp} className="text-lg text-on-surface-variant max-w-[600px] w-full space-y-4">
             {USER_INFO.summary.map((p, i) => (
@@ -33,7 +44,7 @@ export default function Hero() {
 
           <motion.div variants={fadeInUp} className="mt-xl flex flex-wrap gap-8">
             <div className="flex flex-col">
-              <span className="text-[10px] text-zinc-600 uppercase tracking-widest mb-1 font-semibold">Status</span>
+              <span className="text-[10px] text-zinc-600 uppercase tracking-widest mb-1 font-semibold">{t.statusLabel}</span>
               <span className="flex items-center gap-2 text-sm font-mono text-primary">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                 {USER_INFO.status}
