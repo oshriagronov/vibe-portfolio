@@ -9,7 +9,6 @@ import cvFile from "./assets/cv.pdf";
 export const USER_INFO = {
   name: "Oshri Agronov",
   role: "Software Engineering Student",
-  location: "Israel",
   email: "perch-robe-drool@duck.com",
   summary: [
     "I'm a passionate developer who loves turning ideas into real products.",
