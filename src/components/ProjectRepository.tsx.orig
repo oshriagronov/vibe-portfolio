@@ -13,8 +13,6 @@ export default function ProjectRepository() {
   const [githubActivity, setGithubActivity] = useState<string | null>(null);
 
   useEffect(() => {
-    const controller = new AbortController();
-
     async function fetchGithubStats() {
       try {
         const username = USER_INFO.githubUrl.split('/').pop();
@@ -29,8 +27,7 @@ export default function ProjectRepository() {
         // Attempt to get a sum of activity via Search API (commits)
         // Note: This is an approximation and subject to GitHub search limits
         const response = await fetch(`https://api.github.com/search/commits?q=author:${username}`, {
-          headers: { 'Accept': 'application/vnd.github.cloak-preview' },
-          signal: controller.signal
+          headers: { 'Accept': 'application/vnd.github.cloak-preview' }
         });
 
         if (response.ok) {
@@ -41,9 +38,7 @@ export default function ProjectRepository() {
           sessionStorage.setItem(`githubStats_${username}`, resultStr);
         } else {
           // Fallback to public repo count if search is limited
-          const userRes = await fetch(`https://api.github.com/users/${username}`, {
-            signal: controller.signal
-          });
+          const userRes = await fetch(`https://api.github.com/users/${username}`);
           if (userRes.ok) {
             const userData = await userRes.json();
             const resultStr = `${userData.public_repos} Projects`;
@@ -52,13 +47,10 @@ export default function ProjectRepository() {
           }
         }
       } catch (error) {
-        if (error instanceof Error && error.name === 'AbortError') return;
         console.error("Failed to fetch Github stats", error);
       }
     }
     fetchGithubStats();
-
-    return () => controller.abort();
   }, []);
 
   return (
