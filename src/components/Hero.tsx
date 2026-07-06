@@ -54,6 +54,8 @@ export default function Hero() {
             className="w-full h-full object-cover grayscale-[0.2] contrast-110 brightness-90 group-hover:grayscale-0 transition-all duration-700 ease-in-out"
             src={heroPortrait}
             referrerPolicy="no-referrer"
+            fetchPriority="high"
+            loading="eager"
           />
         </motion.div>
       </div>
