@@ -25,7 +25,7 @@ export default function Contact() {
         <motion.a
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${USER_INFO.email}`}
+          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(USER_INFO.email)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="bg-white text-black px-10 py-4 rounded-full font-semibold hover:bg-zinc-200 transition-colors inline-flex items-center gap-2 shadow-xl"
