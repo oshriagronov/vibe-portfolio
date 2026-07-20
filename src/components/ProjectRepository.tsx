@@ -20,10 +20,19 @@ export default function ProjectRepository() {
         const username = USER_INFO.githubUrl.split('/').pop();
         if (!username) return;
 
-        const cached = sessionStorage.getItem(`githubStats_${username}`);
-        if (cached) {
-          setGithubActivity(cached);
-          return;
+        const CACHE_KEY = `githubStats_${username}`;
+        const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+        const cachedStr = localStorage.getItem(CACHE_KEY);
+        if (cachedStr) {
+          try {
+            const cached = JSON.parse(cachedStr);
+            if (Date.now() - cached.timestamp < CACHE_TTL) {
+              setGithubActivity(cached.value);
+              return;
+            }
+          } catch (e) {
+            // Ignore parse errors, refetch
+          }
         }
 
         // Attempt to get a sum of activity via Search API (commits)
@@ -38,7 +47,7 @@ export default function ProjectRepository() {
           const total = data.total_count;
           const resultStr = total > 999 ? `${(total / 1000).toFixed(1)}k+` : `${total}`;
           setGithubActivity(resultStr);
-          sessionStorage.setItem(`githubStats_${username}`, resultStr);
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ value: resultStr, timestamp: Date.now() }));
         } else {
           // Fallback to public repo count if search is limited
           const userRes = await fetch(`https://api.github.com/users/${username}`, {
@@ -48,7 +57,7 @@ export default function ProjectRepository() {
             const userData = await userRes.json();
             const resultStr = `${userData.public_repos} Projects`;
             setGithubActivity(resultStr);
-            sessionStorage.setItem(`githubStats_${username}`, resultStr);
+            localStorage.setItem(CACHE_KEY, JSON.stringify({ value: resultStr, timestamp: Date.now() }));
           }
         }
       } catch (error) {
