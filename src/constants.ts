@@ -3,7 +3,6 @@
  * Change these values to update your portfolio details.
  */
 
-import heroPortrait from "./assets/hero_portrait.png";
 import cvFile from "./assets/cv.pdf";
 
 export const USER_INFO = {
