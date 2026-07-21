@@ -26,30 +26,16 @@ export default function ProjectRepository() {
           return;
         }
 
-        // Attempt to get a sum of activity via Search API (commits)
-        // Note: This is an approximation and subject to GitHub search limits
-        const response = await fetch(`https://api.github.com/search/commits?q=author:${username}`, {
-          headers: { 'Accept': 'application/vnd.github.cloak-preview' },
+        // Fetch public repo count as a proxy for activity
+        const userRes = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}`, {
           signal: controller.signal
         });
 
-        if (response.ok) {
-          const data = await response.json();
-          const total = data.total_count;
-          const resultStr = total > 999 ? `${(total / 1000).toFixed(1)}k+` : `${total}`;
+        if (userRes.ok) {
+          const userData = await userRes.json();
+          const resultStr = `${userData.public_repos} Projects`;
           setGithubActivity(resultStr);
           sessionStorage.setItem(`githubStats_${username}`, resultStr);
-        } else {
-          // Fallback to public repo count if search is limited
-          const userRes = await fetch(`https://api.github.com/users/${username}`, {
-            signal: controller.signal
-          });
-          if (userRes.ok) {
-            const userData = await userRes.json();
-            const resultStr = `${userData.public_repos} Projects`;
-            setGithubActivity(resultStr);
-            sessionStorage.setItem(`githubStats_${username}`, resultStr);
-          }
         }
       } catch (error) {
         if (error instanceof Error && error.name === 'AbortError') return;
@@ -69,7 +55,7 @@ export default function ProjectRepository() {
           <h2 className="text-3xl font-semibold text-primary">Project Repository</h2>
         </div>
         <span className="text-xs font-mono text-zinc-500">
-          {githubActivity ? `Total Commits: ${githubActivity}` : 'Syncing Activity...'}
+          {githubActivity ? `Activity: ${githubActivity}` : 'Syncing Activity...'}
         </span>
       </div>
 
