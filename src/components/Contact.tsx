@@ -7,7 +7,19 @@ import { motion } from "motion/react";
 import { Mail } from "lucide-react";
 import { USER_INFO } from "../constants";
 
+// Lightweight internationalization (i18n) dictionary
+const TRANSLATIONS = {
+  en: {
+    heading: "Building Together.",
+    description: "Always open to discussing ideas or collaborating on innovative projects.",
+    buttonText: "SEND MESSAGE"
+  }
+};
+
 export default function Contact() {
+  const locale = 'en'; // Default language setting, easily configurable in the future
+  const t = TRANSLATIONS[locale];
+
   return (
     <section className="px-6 md:px-12 max-w-7xl mx-auto py-xxl border-t border-zinc-900 bg-black">
       <div className="flex flex-col items-center text-center py-20 w-full">
@@ -17,10 +29,10 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-4xl md:text-7xl font-semibold text-white mb-8 tracking-tighter w-full"
         >
-          Building Together.
+          {t.heading}
         </motion.h2>
-        <p className="text-lg text-zinc-400 mb-10 max-w-[600px] w-full mx-auto leading-relaxed">
-          Always open to discussing ideas or collaborating on innovative projects.
+        <p className="text-lg text-zinc-400 mb-10 max-w-150 w-full mx-auto leading-relaxed">
+          {t.description}
         </p>
         <motion.a
           whileHover={{ scale: 1.05 }}
@@ -30,7 +42,7 @@ export default function Contact() {
           rel="noopener noreferrer"
           className="bg-white text-black px-10 py-4 rounded-full font-semibold hover:bg-zinc-200 transition-colors inline-flex items-center gap-2 shadow-xl"
         >
-          SEND MESSAGE <Mail size={18} />
+          {t.buttonText} <Mail size={18} />
         </motion.a>
       </div>
     </section>

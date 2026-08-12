@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-mono">
             © {CURRENT_YEAR} {USER_INFO.name}
           </div>
-          <div className="text-[9px] tracking-[0.1em] uppercase text-zinc-500 font-mono">
+          <div className="text-[9px] tracking-widest uppercase text-zinc-500 font-mono">
             {t.credits}
           </div>
         </div>

@@ -6,7 +6,17 @@
 import { Download } from "lucide-react";
 import { USER_INFO } from "../constants";
 
+// Lightweight internationalization (i18n) dictionary
+const TRANSLATIONS = {
+  en: {
+    downloadCv: "DOWNLOAD CV"
+  }
+};
+
 export default function Header() {
+  const locale = 'en'; // Default language setting, easily configurable in the future
+  const t = TRANSLATIONS[locale];
+
   return (
     <header className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-zinc-800 flex justify-between items-center px-6 md:px-12 h-16">
       <div className="text-sm font-black tracking-widest text-white uppercase">
@@ -18,7 +28,7 @@ export default function Header() {
           download="Oshri_Agronov_CV.pdf"
           className="flex items-center gap-2 font-sans tracking-tighter text-xs text-white border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-all duration-200"
         >
-          DOWNLOAD CV <Download size={14} />
+          {t.downloadCv} <Download size={14} />
         </a>
       </div>
     </header>

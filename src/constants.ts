@@ -13,7 +13,7 @@ export const USER_INFO = {
     "I'm a passionate developer who loves turning ideas into real products.",
     "Constantly sharpening my skills in modern programming languages, frameworks, and cutting-edge technologies."
   ],
-  status: "Currently: Rafael Advanced Defense Systems",
+  status: "Currently: Defense Company",
   portraitUrl: "/src/assets/hero_portrait.png",
   githubUrl: "https://github.com/oshriagronov",
   linkedinUrl: "https://www.linkedin.com/in/oshri-agronov/",
@@ -71,7 +71,7 @@ export const SKILLS = {
 export const TIMELINE = [
   {
     id: "work-intern",
-    company: "Rafael Advanced Defense Systems",
+    company: "Defense Company",
     role: "Software Engineering Intern",
     period: "DEC 2025 — PRESENT",
     description: "Built and maintained a containerized monitoring system using Docker, developed Python scripts for automated data processing, and wrote C++ programs for hardware-level integration.",

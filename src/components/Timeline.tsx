@@ -6,12 +6,23 @@
 import { motion } from "motion/react";
 import { TIMELINE } from "../constants";
 
+// Lightweight internationalization (i18n) dictionary
+const TRANSLATIONS = {
+  en: {
+    background: "Background",
+    professionalTimeline: "Professional Timeline"
+  }
+};
+
 export default function Timeline() {
+  const locale = 'en'; // Default language setting, easily configurable in the future
+  const t = TRANSLATIONS[locale];
+
   return (
     <section className="px-6 md:px-12 max-w-7xl mx-auto py-xxl">
       <div className="max-w-4xl">
-        <p className="label-caps mb-xs">Background</p>
-        <h2 className="text-3xl font-semibold text-primary mb-xl">Professional Timeline</h2>
+        <p className="label-caps mb-xs">{t.background}</p>
+        <h2 className="text-3xl font-semibold text-primary mb-xl">{t.professionalTimeline}</h2>
 
         <div className="space-y-12">
           {TIMELINE.map((item, idx) => (
