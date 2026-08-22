@@ -14,7 +14,6 @@ export const USER_INFO = {
     "Constantly sharpening my skills in modern programming languages, frameworks, and cutting-edge technologies."
   ],
   status: "Currently: Defense Company",
-  portraitUrl: "/src/assets/hero_portrait.png",
   githubUrl: "https://github.com/oshriagronov",
   linkedinUrl: "https://www.linkedin.com/in/oshri-agronov/",
   twitterUrl: "https://x.com/oshriagronov",
