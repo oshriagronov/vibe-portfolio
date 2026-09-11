@@ -55,7 +55,7 @@ export default function Skills() {
             {SKILLS.languages.map((skill) => (
               <li key={skill.name} className="flex justify-between border-b border-zinc-800 pb-2">
                 <span className="text-sm text-primary">{skill.name}</span>
-                <span className="text-xs font-mono text-zinc-600">{skill.level}</span>
+                <span className="text-xs font-mono text-zinc-400">{skill.level}</span>
               </li>
             ))}
           </ul>

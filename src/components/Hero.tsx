@@ -44,7 +44,7 @@ export default function Hero() {
 
           <motion.div variants={fadeInUp} className="mt-xl flex flex-wrap gap-8">
             <div className="flex flex-col">
-              <span className="text-[10px] text-zinc-600 uppercase tracking-widest mb-1 font-semibold">{t.statusLabel}</span>
+              <span className="text-[10px] text-zinc-400 uppercase tracking-widest mb-1 font-semibold">{t.statusLabel}</span>
               <span className="flex items-center gap-2 text-sm font-mono text-primary">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                 {USER_INFO.status}
