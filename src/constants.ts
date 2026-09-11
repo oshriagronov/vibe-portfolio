@@ -20,37 +20,6 @@ export const USER_INFO = {
   cvUrl: cvFile,
 };
 
-export const PROJECTS = [
-  {
-    id: "pokemmo-companion",
-    title: "pokemmo-companion",
-    tag: "REACT",
-    description: "Your ultimate companion for PokeMMO. Discover type matchups, encounter locations, evolutions, and the best moves for every Pokemon.",
-    repoUrl: "https://github.com/oshriagronov/pokemmo-companion",
-  },
-  {
-    id: "local-chat",
-    title: "local-chat",
-    tag: "PYTHON",
-    description: "A lightweight desktop GUI for chatting with open-source language models locally, featuring multiple modes, optional web search, and full offline privacy.",
-    repoUrl: "https://github.com/oshriagronov/local-chat",
-  },
-  {
-    id: "brick-breaker",
-    title: "brick-breaker",
-    tag: "JAVA",
-    description: "Classic Brick Breaker game built in Java using Swing and AWT, showcasing object-oriented design, game loop mechanics, and customizable gameplay features.",
-    repoUrl: "https://github.com/oshriagronov/brick-breaker",
-  },
-  {
-    id: "dino-game",
-    title: "dino-game",
-    tag: "C++",
-    description: "A simple C++ clone of Chrome’s offline Dinosaur game built with SDL2, focusing on core game mechanics, animation, and object-oriented design.",
-    repoUrl: "https://github.com/oshriagronov/dino-game",
-  },
-];
-
 export const SKILLS = {
   languages: [
     { name: "React", level: "Intermediate" },
