@@ -11,7 +11,7 @@ export const USER_INFO = {
   email: "perch-robe-drool@duck.com",
   summary: [
     "I'm a passionate developer who loves turning ideas into real products.",
-    "Constantly sharpening my skills in modern programming languages, frameworks, and cutting-edge technologies."
+    "Constantly sharpening my skills in modern programming languages, frameworks, and cutting-edge technologies.",
   ],
   status: "Currently: Defense Company",
   githubUrl: "https://github.com/oshriagronov",
@@ -42,15 +42,17 @@ export const TIMELINE = [
     company: "Defense Company",
     role: "Software Engineering Intern",
     period: "DEC 2025 — PRESENT",
-    description: "Built and maintained a containerized monitoring system using Docker, developed Python scripts for automated data processing, and wrote C++ programs for hardware-level integration.",
+    description:
+      "developing real-time, Linux-based systems that integrate hardware and communication interfaces, with an emphasis on clean architecture and automated testing. I also built a Docker-based monitoring solution and Python tools for automated data processing.",
     type: "work",
   },
   {
     id: "edu-braude",
-    company: "Braude Academic College", 
+    company: "Braude Academic College",
     role: "B.S. in Software Engineering",
     period: "JAN 2024 — PRESENT",
-    description: "Relevant Coursework: Operating Systems, Data Structures and Introduction to Algorithms, Algorithms, Object Oriented Programming",
+    description:
+      "Relevant Coursework: Operating Systems, Data Structures and Introduction to Algorithms, Algorithms, Object Oriented Programming",
     type: "edu",
   },
   {
@@ -58,7 +60,8 @@ export const TIMELINE = [
     company: "Israeli Navy",
     role: "Electronic Technician • Military Service",
     period: "SEP 2020 — JUL 2023",
-    description: "Performed electrical and mechanical maintenance, managed transportation operations, and conducted technical measurements.",
+    description:
+      "Performed electrical and mechanical maintenance, managed transportation operations, and conducted technical measurements.",
     type: "work",
   },
   {
